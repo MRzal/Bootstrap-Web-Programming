@@ -4,9 +4,9 @@
 						<th>Guru</th>
 						<th>Tanggal Lahir</th>
 						<th>Jenis Kelamin</th>
-						<th>Nomor Telepon</th>
+						<th>Telpon</th>
 						<th>Alamat</th>
-						<th>Aksi</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>

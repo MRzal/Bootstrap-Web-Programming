@@ -51,7 +51,6 @@ h4 {
   <?php
         include "content_header.php";  
        ?>
-<span class="active"><a href="index.php><i class="fa fa-home">Dashboard</a></span>
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
@@ -67,6 +66,13 @@ h4 {
               		<li class="active"><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
 			        <li><a href="dosen.php"><i class="fa fa-user"></i><span>Guru</span></a></li>
 			        <li><a href="mahasiswa.php"><i class="fa fa-users"></i><span>Siswa</span></a></li>
+              <li><a href="ruangan.php"><i class="fa fa-columns"></i><span>Ruangan</span></a></li>
+			        <li><a href="matakuliah.php"><i class="fa fa-book"></i><span>Mata Pelajaran</span></a></li>
+			        <li><a href="jurusan.php"><i class="fa fa-university"></i><span>Ekstrakurikuler</span></a></li>
+			        <li><a href="jenjang.php"><i class="fa fa-graduation-cap"></i><span>Jenjang</span></a></li>
+					<li><a href="jadwal.php"><i class="fa fa-calendar"></i><span>Jadwal</span></a></li>
+					<li><a href="user.php"><i class="fa fa-user-circle-o"></i><span>User</span></a></li>
+			        <li><a href="about.php"><i class="fa fa-info-circle"></i><span>Tentang Aplikasi</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -77,7 +83,7 @@ h4 {
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Dashboard
+          <span style="color: #000; font-size: 24px;">Dashboard
           </h1>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i> Dashboard</li>
@@ -90,7 +96,7 @@ h4 {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header" style="font-size: 18px">
-					<b><center><h1>Sistem</h1></center></b>
+					<center><h1><b><span style="color: #2CC115; font-size: 34px;">Sistem</b></h1></center>
 					<center><img src="../aset/foto/ids.jpg" width="225" height="225" /></center>
 				  <center><h2><b><span style="color: #2CC115; font-size: 34px;">Database Informasi Akademik</span></b></h2></center>
                 </div><!-- /.box-header -->
