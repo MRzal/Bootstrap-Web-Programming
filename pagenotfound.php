@@ -25,7 +25,7 @@
         <!-- Main content -->
         <section class="content">
 			<div class="login-logo">
-				<img src="aset/foto/ids.jpg" height="75" width="75"> <b>IDS Akademik</b>
+				<img src="aset/foto/ids.jpg" height="75" width="75"> <b>Sistem Database Akademik</b>
 				<br/>
 				<br/>
 			</div>

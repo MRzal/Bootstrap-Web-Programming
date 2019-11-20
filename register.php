@@ -59,10 +59,9 @@ if(isset ($_GET["Notif"]) && !empty ($_GET["Notif"])){
     <div class="login-box">
       <div class="login-logo">
         <b>Sistem Database Akademik</b>
-        <b><link rel="shortcut icon" type="image/icon" href="../favicon.ico"></b>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <b><p class="login-box-msg">Login Sistem Database</p></b>
+        <b><p class="login-box-msg">Register Sistem Database</p></b>
         <form action="vl_user.php" method="post">
           <div class="form-group has-feedback">
             <input type="text" name="Username" class="form-control" placeholder="Username" maxlength="30" />
@@ -72,11 +71,15 @@ if(isset ($_GET["Notif"]) && !empty ($_GET["Notif"])){
             <input type="password" name="Password" class="form-control" placeholder="Password" maxlength="255" />
             <span class="form-control-feedback"><i class="fa fa-unlock"></i></span>
           </div>
+          <div class="form-group has-feedback">
+            <input type="int" name="usergroup" class="form-control" placeholder="Usergroup" maxlength="1" />
+            <span class="form-control-feedback"><i class="fa fa-user"></i></span>
+          </div>
           <div class="row">
             <div class="col-xs-8">
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary">Sign In <i class="fa fa-sign-in"></i></button>
+              <button type="submit" class="btn btn-primary">Sign Up <i class="fa fa-sign-in"></i></button>
             </div><!-- /.col -->
           </div>
 		  <br>
