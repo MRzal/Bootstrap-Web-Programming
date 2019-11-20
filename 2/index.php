@@ -31,24 +31,23 @@ include "auth_user.php";
 h1,h2,h3,h4,h5,h6 {
 	font-family: "Source Sans Pro", sans-serif;
 }
-h1 {
+h2 {
 	color: #2CC115;
 }
-    a:link {
-	color: #3EDB10;
-}
-    h2 {
+    h1 {
 	color: #2CC115;
-	font-size: 18px;
 }
-h4 {
-	color: blue;
+h3 {
+	color: inherit;
+}
+    h4 {
+	color: #2CC115;
 }
     </style>
  </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-  <?php
+      <?php
         include "content_header.php";  
        ?>
       <!-- Left side column. contains the logo and sidebar -->
@@ -56,34 +55,29 @@ h4 {
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- Sidebar user panel -->
-         <div class="user-panel">
+          <div class="user-panel">
             <div class="pull-left image">
               <p></p>
             </div>
           </div><!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-              	<li class="header"><h4><b><center style="font-size: 18px; font-family: 'Source Sans Pro', sans-serif;">Menu Panel</center></b></h4></li>
-              		<li class="active"><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-			        <li><a href="dosen.php"><i class="fa fa-user"></i><span>Guru</span></a></li>
-			        <li><a href="mahasiswa.php"><i class="fa fa-users"></i><span>Siswa</span></a></li>
-              <li><a href="ruangan.php"><i class="fa fa-columns"></i><span>Ruangan</span></a></li>
-			        <li><a href="matakuliah.php"><i class="fa fa-book"></i><span>Mata Pelajaran</span></a></li>
-			        <li><a href="jurusan.php"><i class="fa fa-university"></i><span>Ekstrakurikuler</span></a></li>
-			        <li><a href="jenjang.php"><i class="fa fa-graduation-cap"></i><span>Jenjang</span></a></li>
+				<li class="header">
+				  <h4><b><center style="font-size: 18px; font-family: 'Source Sans Pro', sans-serif;">Menu Panel</center></b></h4></li>
+					<li class="active"><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
 					<li><a href="jadwal.php"><i class="fa fa-calendar"></i><span>Jadwal</span></a></li>
-					<li><a href="user.php"><i class="fa fa-user-circle-o"></i><span>User</span></a></li>
-			        <li><a href="about.php"><i class="fa fa-info-circle"></i><span>Tentang Aplikasi</span></a></li>
+					<li><a href="nilai.php"><i class="fa fa-book"></i><span>Nilai Siswa</span></a></li>
+					<li><a href="about.php"><i class="fa fa-info-circle"></i><span>Tentang Aplikasi</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->
-  </aside>
+      </aside>
 
       <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+      <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-          <span style="color: #000; font-size: 24px;">Dashboard
+          <h1 style="color: #2CC115">
+            Dashboard
           </h1>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i> Dashboard</li>
@@ -95,10 +89,10 @@ h4 {
           <div class="row">
             <div class="col-xs-12">
               <div class="box">
-                <div class="box-header" style="font-size: 18px">
-					<center><h1><b><span style="color: #2CC115; font-size: 34px;">Sistem</b></h1></center>
+                <div class="box-header">
+					<h1><center><b>Sistem</b></center></h1>
 					<center><img src="../aset/foto/ids.jpg" width="225" height="225" /></center>
-				  <center><h2><b><span style="color: #2CC115; font-size: 34px;">Database Informasi Akademik</span></b></h2></center>
+				  <center><h2><span style="color: #2CC115; font-size: 18px"><b>Database Informasi Akademik</b></span><b> <?php echo date ('Y') ?></b></h2></center>
                 </div><!-- /.box-header -->
                 <div class="box-body">
 					
@@ -107,8 +101,8 @@ h4 {
             </div><!-- /.col -->
           </div><!-- /.row -->
         </section><!-- /.content -->
-  </div><!-- /.content-wrapper -->
-    <?php
+    </div><!-- /.content-wrapper -->
+  <?php
 		include	"content_footer.php";
 	?>
     </div><!-- ./wrapper -->

@@ -3,8 +3,16 @@
 session_start();
 include "../koneksi.php";
 include "auth_user.php";
-?>
 
+$daftarhari[] = "Senin";
+$daftarhari[] = "Selasa";
+$daftarhari[] = "Rabu";
+$daftarhari[] = "Kamis";
+$daftarhari[] = "Jumat";
+$daftarhari[] = "Sabtu";
+$daftarhari[] = "Minggu";
+
+?>
 <!DOCTYPE html>
 <html>
  <head>
@@ -26,20 +34,16 @@ include "auth_user.php";
         <section class="sidebar">
           <!-- Sidebar user panel -->
           <div class="user-panel">
-          <ul class="sidebar-menu">
+            <div class="pull-left image">
+              <p></p>
+            </div>
           </div><!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-                <li class="header"><h4><b><center style="font-size: 18px">Menu Panel</center></b></h4></li>
-              		<li><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-			        <li class="active"><a href="dosen.php"><i class="fa fa-user"></i><span>Guru</span></a></li>
-			        <li><a href="mahasiswa.php"><i class="fa fa-users"></i><span>Siswa</span></a></li>
-					<li><a href="ruangan.php"><i class="fa fa-columns"></i><span>Ruangan</span></a></li>
-			        <li><a href="matakuliah.php"><i class="fa fa-book"></i><span>Mata Pelajaran</span></a></li>
-			        <li><a href="jurusan.php"><i class="fa fa-university"></i><span>Ekstrakurikuler</span></a></li>
-			        <li><a href="jenjang.php"><i class="fa fa-graduation-cap"></i><span>Jenjang</span></a></li>
-					<li><a href="jadwal.php"><i class="fa fa-calendar"></i><span>Jadwal</span></a></li>
-					<li><a href="user.php"><i class="fa fa-user-circle-o"></i><span>User</span></a></li>
-			        <li><a href="about.php"><i class="fa fa-info-circle"></i><span>Tentang Aplikasi</span></a></li>
+              <li class="header"><h4><b><center style="font-size: 18px; font-family: 'Source Sans Pro', sans-serif;">Menu Panel</center></b></h4></li>
+              <li><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+					<li class="active"><a href="jadwal.php"><i class="fa fa-calendar"></i><span>Jadwal</span></a></li>
+					<li><a href="nilai.php"><i class="fa fa-book"></i><span>Nilai Siswa</span></a></li>
+					<li><a href="about.php"><i class="fa fa-info-circle"></i><span>Tentang Aplikasi</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -50,10 +54,10 @@ include "auth_user.php";
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Guru
+            Jadwal
           </h1>
           <ol class="breadcrumb">
-            <li><i class="fa fa-user"></i> Guru</li>
+            <li><i class="fa fa-calendar"></i> Jadwal</li>
           </ol>
         </section>
 
@@ -66,11 +70,9 @@ include "auth_user.php";
 
                 </div><!-- /.box-header -->
                 <div class="box-body">
-				<a href="#"><button class="btn btn-success" type="button" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-plus"></i> Tambah Guru</button></a>
-                  <br></br>
 				  <table id="data" class="table table-bordered table-striped table-scalable">
 						<?php
-							include "dt_dosen.php";
+							include "dt_jadwal.php";
 						?>
                   </table>
                 </div><!-- /.box-body -->
@@ -85,66 +87,122 @@ include "auth_user.php";
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Tambah Guru</h4>
+						<h4 class="modal-title">Tambah Jadwal</h4>
 					</div>
 					<div class="modal-body">
-						<form action="dosen_add.php" name="modal_popup" enctype="multipart/form-data" method="post">
+						<form action="jadwal_add.php" name="modal_popup" enctype="multipart/form-data" method="post">
 							<div class="form-group">
-								<label>NIP</label>
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-id-card"></i>
-										</div>
-										<input name="NIP" type="text" class="form-control" placeholder="Nomor Induk Pengajar"/>
-									</div>
-							</div>
-							<div class="form-group">
-								<label>Guru</label>
+								<label>Siswa</label>
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-user"></i>
 										</div>
-										<input name="Nama_Guru" type="text" class="form-control" placeholder="Nama Guru"/>
-									</div>
-							</div>
-							<div class="form-group">
-								<label>Tanggal Lahir</label>
-									<div class="input-group date">
-										<div class="input-group-addon">
-											<i class="fa fa-calendar"></i>
-										</div>
-										<input id="Tanggal_Lahir" name="Tanggal_Lahir" type="text" class="form-control" placeholder="Tanggal Lahir">
-									</div>
-							</div>
-							<div class="form-group">
-								<label>Jenis Kelamin</label>
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-user-o"></i>
-										</div>
-										<select name="JK" class="form-control">
-											<option selected>Pilih Jenis Kelamin</option>
-											<option value="L">Laki - laki</option>
-											<option value="P">Perempuan</option>
+										<select name="NIP_Jadwal" class="form-control">
+										<?php
+											
+											$querydosen = mysqli_query($konek, "SELECT * FROM Guru");
+											if ($querydosen == false){
+												die ("Terdapat Kesalahan : ". mysqli_error($konek));
+											}
+											while ($dosen = mysqli_fetch_array($querydosen)){
+												echo "<option value='$dosen[NIP]'>$dosen[Nama_Guru]</option>";
+											}
+										?>
 										</select>
 									</div>
 							</div>
 							<div class="form-group">
-								<label>No. Telp</label>
+								<label>Mata Pelajaran</label>
 									<div class="input-group">
 										<div class="input-group-addon">
-											<i class="fa fa-phone"></i>
+											<i class="fa fa-book"></i>
 										</div>
-										<input name="No_Telp" type="text" class="form-control" placeholder="No_Telp"/>
+										<select name="Kode_Matakuliah_Jadwal" class="form-control">
+											<?php
+												
+												$querymtk = mysqli_query ($konek, "SELECT * FROM Matapelajaran");
+												if ($querymtk == false){
+													die ("Terdapat Kesalahan : ". mysqli_error($konek));
+												}
+												while ($mtk = mysqli_fetch_array($querymtk)){
+													echo "<option value='$mtk[Kode_Matakuliah]'>$mtk[Nama_Matakuliah]</option>";
+												}
+											?>
+										</select>
 									</div>
 							</div>
 							<div class="form-group">
-								<label>Alamat</label>
+								<label>Ruangan</label>
 									<div class="input-group">
 										<div class="input-group-addon">
-											<i class="fa fa-flag"></i>
+											<i class="fa fa-columns"></i>
 										</div>
-										<input name="Alamat" type="text" class="form-control" placeholder="Alamat"/>
+										<select name="Kode_Ruangan_Jadwal" class="form-control">
+											<?php
+												
+												$queryruang = mysqli_query($konek, "SELECT * FROM ruangan");
+												if($queryruang == false){
+													die ("Terdapat Kesalahan : ". mysqli_error($konek));
+												}
+												while ($ruang = mysqli_fetch_array($queryruang)){
+													echo "<option value='$ruang[Kode_Ruangan]'>$ruang[Nama_Ruangan]</option>";
+												}
+											?>
+										</select>
+									</div>
+							</div>
+							<div class="form-group">
+								<label>Jurusan</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-university"></i>
+										</div>
+										<select name="Kode_Jurusan_Jadwal" class="form-control">
+											<?php
+												
+												$queryjurusan = mysqli_query($konek, "SELECT * FROM Ekstrakurikuler");
+												if($queryjurusan == false){
+													die ("Terdapat Kesalahan : ". mysqli_error($konek));
+												}
+												while ($jurusan = mysqli_fetch_array($queryjurusan)){
+													echo "<option value='$jurusan[Kode_Jurusan]'>$jurusan[Nama_Ekstrakurikuler]</option>";
+												}
+											?>
+										</select>
+									</div>
+							</div>
+							<div class="form-group">
+								<label>Hari</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<select name="Hari" class="form-control">
+										<?php
+											for($hari=0; $hari<count($daftarhari); $hari++)
+											{
+												echo "<option value='$daftarhari[$hari]'>$daftarhari[$hari]</option>";
+											}
+										?>
+										</select>
+									</div>
+							</div>
+							<div class="form-group">
+								<label>Jam Mulai</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-clock-o"></i>
+										</div>
+										<input id="Jam_Mulai" name="Jam_Mulai" type="text" class="form-control" placeholder="Jam Mulai">
+									</div>
+							</div>
+							<div class="form-group">
+								<label>Jam Selesai</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-clock-o"></i>
+										</div>
+										<input id="Jam_Selesai" name="Jam_Selesai" type="text" class="form-control" placeholder="Jam Selesai">
 									</div>
 							</div>
 							<div class="modal-footer">
@@ -162,7 +220,7 @@ include "auth_user.php";
 		</div>
 		
 		<!-- Modal Popup Dosen Edit -->
-		<div id="ModalEditDosen" class="modal fade" tabindex="-1" role="dialog"></div>
+		<div id="ModalEditJadwal" class="modal fade" tabindex="-1" role="dialog"></div>
 		
 		<!-- Modal Popup untuk delete--> 
 		<div class="modal fade" id="modal_delete">
@@ -181,7 +239,7 @@ include "auth_user.php";
 		</div>
 		
     </div><!-- /.content-wrapper -->
-    <?php
+	<?php
 		include	"content_footer.php";
 	?>
     </div><!-- ./wrapper -->
