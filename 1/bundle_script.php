@@ -18,6 +18,26 @@
 	<script src="../aset/plugins/select2/select2.full.min.js"></script>
 	<script src="../aset/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 	<!-- page script -->
+<?
+	include "../koneksi.php";
+	function get_rekap_asal(){
+		$konek = connect_to_db();
+		$sql = "SELECT COUNT(*) as num, Alamat FROM siswa GROUP BY Alamat";
+		$query = mysqli_query($konek, $sql);
+		$data = [];
+		while($row = mysqli_fetch_array($query)){
+			$data[$row['Alamat']] = $row['num'];
+		}
+
+		$total = array_sum($data);
+		foreach ($data as $alamat => $num) {
+			$data[$alamat] = round($num*100/$total,2);
+		}
+
+		return $data;
+	}
+?>
+
     <script>
       $(function () {	
 		// Daterange Picker
@@ -131,6 +151,20 @@
 					success: function (ajaxData){
 					$("#ModalEditJenjang").html(ajaxData);
 					$("#ModalEditJenjang").modal('show',{backdrop: 'true'});
+					}
+				});
+			});
+
+		// User
+		$(".open_modal").click(function(e) {
+			var m = $(this).attr("id");
+				$.ajax({
+					url: "user_modal_edit.php",
+					type: "GET",
+					data : {Id_User: m,},
+					success: function (ajaxData){
+					$("#ModalEditUser").html(ajaxData);
+					$("#ModalEditUser").modal('show',{backdrop: 'true'});
 					}
 				});
 			});

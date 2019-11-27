@@ -4,12 +4,11 @@ session_start();
 include "../koneksi.php";
 include "auth_user.php";
 ?>
-
 <!DOCTYPE html>
 <html>
  <head>
     <meta charset="utf-8">
-    <title>Sistem Akademik</title>
+    <title>IDS Akademik</title>
 	<!-- Library CSS -->
 	<?php
 		include "bundle_css.php";
@@ -26,14 +25,16 @@ include "auth_user.php";
         <section class="sidebar">
           <!-- Sidebar user panel -->
           <div class="user-panel">
-          <ul class="sidebar-menu">
+            <div class="pull-left image">
+              <p></p>
+            </div>
           </div><!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-                <li class="header"><h4><b><center style="font-size: 18px">Menu Panel</center></b></h4></li>
-              		<li><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-			        <li class="active"><a href="dosen.php"><i class="fa fa-user"></i><span>Guru</span></a></li>
+                  <li class="header"><h4><b><center style="font-size: 18px">Menu Panel</center></b></h4></li>
+              <li><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+			        <li><a href="dosen.php"><i class="fa fa-user"></i><span>Guru</span></a></li>
 			        <li><a href="mahasiswa.php"><i class="fa fa-users"></i><span>Siswa</span></a></li>
-					<li><a href="ruangan.php"><i class="fa fa-columns"></i><span>Ruangan</span></a></li>
+			        <li class="active"><a href="ruangan.php"><i class="fa fa-columns"></i><span>Ruangan</span></a></li>
 			        <li><a href="matakuliah.php"><i class="fa fa-book"></i><span>Mata Pelajaran</span></a></li>
 			        <li><a href="jurusan.php"><i class="fa fa-university"></i><span>Ekstrakurikuler</span></a></li>
 			        <li><a href="jenjang.php"><i class="fa fa-graduation-cap"></i><span>Jenjang</span></a></li>
@@ -50,10 +51,10 @@ include "auth_user.php";
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Guru
+            Ruangan
           </h1>
           <ol class="breadcrumb">
-            <li><i class="fa fa-user"></i> Guru</li>
+            <li><i class="fa fa-columns"></i> Ruangan</li>
           </ol>
         </section>
 
@@ -66,15 +67,11 @@ include "auth_user.php";
 
                 </div><!-- /.box-header -->
                 <div class="box-body">
-				<center><h1>Tabel Persebaran Guru</h1></center>
-				<?php
-					include "pie_guru.php";
-				?>
-				<a href="#"><button class="btn btn-success" type="button" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-plus"></i> Tambah Guru</button></a>
+				<a href="#"><button class="btn btn-success" type="button" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-plus"></i> Add</button></a>
                   <br></br>
 				  <table id="data" class="table table-bordered table-striped table-scalable">
 						<?php
-							include "dt_dosen.php";
+							include "dt_ruangan.php";
 						?>
                   </table>
                 </div><!-- /.box-body -->
@@ -89,66 +86,26 @@ include "auth_user.php";
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Tambah Guru</h4>
+						<h4 class="modal-title">Tambah Ruangan</h4>
 					</div>
 					<div class="modal-body">
-						<form action="dosen_add.php" name="modal_popup" enctype="multipart/form-data" method="post">
+						<form action="ruangan_add.php" name="modal_popup" enctype="multipart/form-data" method="post">
 							<div class="form-group">
-								<label>NIP</label>
+								<label>Kode Ruangan</label>
 									<div class="input-group">
 										<div class="input-group-addon">
-											<i class="fa fa-id-card"></i>
+											<i class="fa fa-columns"></i>
 										</div>
-										<input name="NIP" type="text" class="form-control" placeholder="Nomor Induk Pengajar"/>
+										<input name="Kode_Ruangan" type="text" class="form-control" placeholder="Kode Ruangan"/>
 									</div>
 							</div>
 							<div class="form-group">
-								<label>Guru</label>
+								<label>Ruangan</label>
 									<div class="input-group">
 										<div class="input-group-addon">
-											<i class="fa fa-user"></i>
+											<i class="fa fa-columns"></i>
 										</div>
-										<input name="Nama_Guru" type="text" class="form-control" placeholder="Nama Guru"/>
-									</div>
-							</div>
-							<div class="form-group">
-								<label>Tanggal Lahir</label>
-									<div class="input-group date">
-										<div class="input-group-addon">
-											<i class="fa fa-calendar"></i>
-										</div>
-										<input id="Tanggal_Lahir" name="Tanggal_Lahir" type="text" class="form-control" placeholder="Tanggal Lahir">
-									</div>
-							</div>
-							<div class="form-group">
-								<label>Jenis Kelamin</label>
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-user-o"></i>
-										</div>
-										<select name="JK" class="form-control">
-											<option selected>Pilih Jenis Kelamin</option>
-											<option value="L">Laki - laki</option>
-											<option value="P">Perempuan</option>
-										</select>
-									</div>
-							</div>
-							<div class="form-group">
-								<label>No. Telp</label>
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-phone"></i>
-										</div>
-										<input name="No_Telp" type="text" class="form-control" placeholder="No_Telp"/>
-									</div>
-							</div>
-							<div class="form-group">
-								<label>Alamat</label>
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-flag"></i>
-										</div>
-										<input name="Alamat" type="text" class="form-control" placeholder="Alamat"/>
+										<input name="Nama_Ruangan" type="text" class="form-control" placeholder="Ruangan"/>
 									</div>
 							</div>
 							<div class="modal-footer">
@@ -166,7 +123,7 @@ include "auth_user.php";
 		</div>
 		
 		<!-- Modal Popup Dosen Edit -->
-		<div id="ModalEditDosen" class="modal fade" tabindex="-1" role="dialog"></div>
+		<div id="ModalEditRuangan" class="modal fade" tabindex="-1" role="dialog"></div>
 		
 		<!-- Modal Popup untuk delete--> 
 		<div class="modal fade" id="modal_delete">
@@ -185,7 +142,7 @@ include "auth_user.php";
 		</div>
 		
     </div><!-- /.content-wrapper -->
-    <?php
+	<?php
 		include	"content_footer.php";
 	?>
     </div><!-- ./wrapper -->

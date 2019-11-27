@@ -4,11 +4,12 @@ session_start();
 include "../koneksi.php";
 include "auth_user.php";
 ?>
+
 <!DOCTYPE html>
 <html>
  <head>
     <meta charset="utf-8">
-    <title>Sistem Akademik</title>
+    <title>IDS Akademik</title>
 	<!-- Library CSS -->
 	<?php
 		include "bundle_css.php";
@@ -34,6 +35,13 @@ include "auth_user.php";
               <li><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
 			        <li><a href="dosen.php"><i class="fa fa-user"></i><span>Guru</span></a></li>
 			        <li class="active"><a href="mahasiswa.php"><i class="fa fa-users"></i><span>Siswa</span></a></li>
+			        <li><a href="ruangan.php"><i class="fa fa-columns"></i><span>Ruangan</span></a></li>
+			        <li><a href="matakuliah.php"><i class="fa fa-book"></i><span>Mata Pelajaran</span></a></li>
+			        <li><a href="jurusan.php"><i class="fa fa-university"></i><span>Ekstrakurikuler</span></a></li>
+			        <li><a href="jenjang.php"><i class="fa fa-graduation-cap"></i><span>Jenjang</span></a></li>
+					<li><a href="jadwal.php"><i class="fa fa-calendar"></i><span>Jadwal</span></a></li>
+					<li><a href="user.php"><i class="fa fa-user-circle-o"></i><span>User</span></a></li>
+			        <li><a href="about.php"><i class="fa fa-info-circle"></i><span>Tentang Aplikasi</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -60,7 +68,11 @@ include "auth_user.php";
 
                 </div><!-- /.box-header -->
                 <div class="box-body">
-				<a href="#"><button class="btn btn-success" type="button" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-plus"></i>  Tambah Siswa</button></a>
+				<center><h1>Tabel Persebaran Siswa</h1></center>
+				<?php
+					include "pie.php";
+				?>
+				<a href="#"><button class="btn btn-success" type="button" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-plus"></i> Tambah Siswa</button></a>
                   <br></br>
 				  <table id="data" class="table table-bordered table-striped table-scalable">
 						<?php
